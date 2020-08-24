@@ -10,6 +10,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Optional;
 
 @Slf4j
@@ -33,7 +35,14 @@ public class GlobalRequestHandler implements HandlerInterceptor {
         Optional<String> userIdO = Optional.ofNullable(request.getHeader(JWTUtil.USER_ID));
 
         //此处只要 userId 不为 null 则表示 username 也是合法的 , 若 username 可为 null 也可以
-        userIdO.ifPresent(userId -> CurrentUser.init(Long.parseLong(userId), request.getHeader(JWTUtil.USERNAME)));
+        userIdO.ifPresent(userId -> {
+            try {
+                //解决request header中文乱码
+                CurrentUser.init(Long.parseLong(userId), URLDecoder.decode(request.getHeader(JWTUtil.USERNAME),"UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        });
 
         return Boolean.TRUE;
     }

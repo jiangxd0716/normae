@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Optional;
 
 @Slf4j
@@ -96,7 +98,12 @@ public class AuthorityFilter implements GlobalFilter {
                     httpHeaders.remove(this.jwtKey);
                     //将 userId 和 username 放入 header 中 , 传递到下级服务
                     httpHeaders.add(JWTUtil.USER_ID, jwt.getUserId());
-                    httpHeaders.add(JWTUtil.USERNAME, jwt.getUsername());
+                    try {
+                        //解决request header中文乱码
+                        httpHeaders.add(JWTUtil.USERNAME, URLEncoder.encode(jwt.getUsername(), "UTF-8"));
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                 }).build();
 
                 return chain.filter(exchange);
