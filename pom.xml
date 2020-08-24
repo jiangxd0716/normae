@@ -30,27 +30,17 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>8</java.version>
-
         <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
-
         <jdbc-mysql.version>8.0.11</jdbc-mysql.version>
         <druid.version>1.1.21</druid.version>
         <mybatis-plus.version>3.2.0</mybatis-plus.version>
-
         <httpclient.version>4.5.11</httpclient.version>
-
         <jedis.version>3.0.1</jedis.version>
-
         <jwt.version>0.7.0</jwt.version>
-
         <lombok.version>1.18.8</lombok.version>
-
         <gson.version>2.6.2</gson.version>
-
         <guava.version>29.0-jre</guava.version>
-
         <hutool.version>5.1.2</hutool.version>
-
         <swagger.version>2.9.2</swagger.version>
     </properties>
 
@@ -65,7 +55,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Lombok end -->
 
         <!-- Guava begin -->
@@ -75,19 +64,15 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-
         <!-- Guava begin -->
 
         <!-- HuTool start -->
-
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
         </dependency>
-
         <!-- HuTool end -->
-
 
     </dependencies>
 
@@ -95,6 +80,7 @@
 
         <dependencies>
 
+            <!--Spring Cloud 依赖-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -103,7 +89,6 @@
                 <scope>import</scope>
             </dependency>
 
-
             <!-- MySql start -->
             <dependency>
                 <groupId>mysql</groupId>
@@ -111,53 +96,41 @@
                 <version>${jdbc-mysql.version}</version>
                 <scope>runtime</scope>
             </dependency>
-
             <!-- MySql end -->
 
             <!-- 数据库连接池 start -->
-
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-
             <!-- 数据库连接池 start -->
 
             <!-- MyBatis start -->
-
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
-
             <!-- MyBatis end -->
 
             <!-- ShardingJDBC start -->
-
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
                 <version>4.0.0-RC1</version>
             </dependency>
-
             <!-- ShardingJDBC end -->
 
-
             <!-- Jedis begin -->
-
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
             </dependency>
-
             <!-- Jedis end -->
 
-
             <!-- Kafka begin -->
-
             <!--<dependency>
                 <groupId>org.springframework.kafka</groupId>
                 <artifactId>spring-kafka</artifactId>
@@ -174,41 +147,31 @@
                 <artifactId>kafka-clients</artifactId>
                 <version>${kafka.version}</version>
             </dependency>-->
-
             <!-- Kafka end-->
 
             <!-- HttpClient start -->
             <!-- 使用 org.apache.httpcomponents 而不是 commons-httpclient，commons-httpclient是一个HttpClient老版本的项目，到3.1版本为止，此后项目被废弃不再更新（3.1版本，07年8.21发布），它已经被归入了一个更大的Apache HttpComponents项目中，这个项目版本号是HttpClient 4.x（4.5.8最新版本，19年5.30发布）。 -->
-
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
                 <version>${httpclient.version}</version>
             </dependency>
-
             <!-- HttpClient start -->
 
-
             <!-- JWT begin -->
-
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
             </dependency>
-
             <!-- JWT end -->
 
-
-
             <!-- JSON start -->
-
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
             </dependency>
-
             <!-- JSON end -->
 
             <!-- Swagger start -->
@@ -239,7 +202,5 @@
             </activation>
         </profile>
     </profiles>
-
-
 
 </project>

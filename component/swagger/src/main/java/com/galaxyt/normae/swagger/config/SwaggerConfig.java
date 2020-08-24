@@ -1,4 +1,4 @@
-package com.galaxyt.normae.web.config;
+package com.galaxyt.normae.swagger.config;
 
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
